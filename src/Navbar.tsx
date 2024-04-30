@@ -1,9 +1,9 @@
 import * as React from "react";
-import AppBar from "@mui/material/AppBar";
+import AppBar, { AppBarProps } from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 
-const NavigationBar = React.forwardRef(function NavigationBar(_props, ref) {
+const NavigationBar = React.forwardRef<HTMLDivElement, AppBarProps>(function NavigationBar(_props, ref) {
   return (
     <AppBar position="static" ref={ref}>
       <Toolbar>

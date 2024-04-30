@@ -6,7 +6,7 @@ import './index.css'
 
 function Root() {
   const [navbarHeight, setNavbarHeight] = useState(0);
-  const navbarRef = useRef<HTMLElement>(null);
+  const navbarRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (navbarRef.current) {
