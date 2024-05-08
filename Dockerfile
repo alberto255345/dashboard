@@ -1,6 +1,6 @@
 # Use the official lightweight Node.js 20 image.
 # https://hub.docker.com/_/node
-FROM node:20-slim
+FROM node:20-alpine
 
 # Create and change to the app directory.
 WORKDIR /usr/src/app
@@ -23,6 +23,6 @@ RUN npm run build
 
 RUN rm -rf src
 
-# Run the web service on container startup.
-# CMD ["node", "/usr/src/app/build/index.js"] 
-CMD ["npm", "run", "dev"]
+EXPOSE 8080
+
+CMD [ "npm", "run", "preview" ]
