@@ -24,16 +24,16 @@ const ButtonUsage: React.FC<ButtonUsageProps> = ({ style }) => {
   }, []);
 
   const bind = useLongPress(enabled ? callback : null, {
-    onStart: (meta) => {
+    onStart: () => {
       startTimeRef.current = Date.now();
       const id = setInterval(updateProgressBar, 50); // Update every 50ms
       setIntervalId(id);
     },
-    onFinish: (meta) => {
+    onFinish: () => {
       if (intervalId) clearInterval(intervalId);
       setProgress(0);
     },
-    onCancel: (meta) => {
+    onCancel: () => {
       if (intervalId) clearInterval(intervalId);
       setProgress(0);
     },
