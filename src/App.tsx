@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import * as React from 'react';
 import { useState, useRef, useCallback } from 'react';
 import Grid from '@mui/material/Grid';
@@ -12,32 +13,32 @@ interface ButtonUsageProps {
 
 const ButtonUsage: React.FC<ButtonUsageProps> = ({ style }) => {
   const [progress, setProgress] = useState(0);
-  const [enabled, setEnabled] = useState(true);
-  const [longPressed, setLongPressed] = useState(false);
+  const [enabled] = useState(true);
+  // const [longPressed, setLongPressed] = useState(false);
   const progressBarContainerRef = useRef<HTMLDivElement>(null);
   const holdTime = 3000; // 3 seconds
   const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
   const startTimeRef = useRef<number>(0);
 
   const callback = useCallback(() => {
-    setLongPressed(true);
+    // setLongPressed(true);
     sendGetRequest();
   }, []);
 
   const bind = useLongPress(enabled ? callback : null, {
-    onStart: (event, meta) => {
+    onStart: (meta) => {
       console.log("Press started", meta);
       startTimeRef.current = Date.now();
       const id = setInterval(updateProgressBar, 50); // Update every 50ms
       setIntervalId(id);
     },
-    onFinish: (event, meta) => {
-      setLongPressed(false);
+    onFinish: (meta) => {
+      // setLongPressed(false);
       console.log("Long press finished", meta);
       if (intervalId) clearInterval(intervalId);
       setProgress(0);
     },
-    onCancel: (event, meta) => {
+    onCancel: (meta) => {
       console.log("Press cancelled", meta);
       if (intervalId) clearInterval(intervalId);
       setProgress(0);
