@@ -47,7 +47,7 @@ const ButtonUsage: React.FC<ButtonUsageProps> = ({ style }) => {
   };
 
   const sendGetRequest = async () => {
-    const apiUrl = import.meta.env.REACT_APP_API_URL || 'https://httpbin.org/get';
+    const apiUrl = import.meta.env.REACT_APP_API_URL || 'https://us-apia.coolkit.cc/v2/smartscene2/webhooks/execute?id=01c628ff3bf54731a64740e4c76b78f5';
 
     const config: AxiosRequestConfig = {
       headers: {
@@ -69,7 +69,8 @@ const ButtonUsage: React.FC<ButtonUsageProps> = ({ style }) => {
 
   return (
     <main id="app" style={style}>
-      <Grid item>
+      <Grid item style={{ display: 'grid' }}>
+        <label style={{ color: 'white' }}>Para abrir, mantenha pressionado por 3 segundos.</label>
         <button {...bind()}>
           <span className="text">Abrir Portão</span>
           <span className="shimmer"></span>
