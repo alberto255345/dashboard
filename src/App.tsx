@@ -69,7 +69,8 @@ const ButtonUsage: React.FC<ButtonUsageProps> = ({ style }) => {
 
   return (
     <main id="app" style={style}>
-      <Grid item>
+      <Grid item style={{ display: 'grid' }}>
+        <label style={{ color: 'white' }}>Para abrir, mantenha pressionado por 3 segundos.</label>
         <button {...bind()}>
           <span className="text">Abrir Portão</span>
           <span className="shimmer"></span>
