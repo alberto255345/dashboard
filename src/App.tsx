@@ -14,32 +14,26 @@ interface ButtonUsageProps {
 const ButtonUsage: React.FC<ButtonUsageProps> = ({ style }) => {
   const [progress, setProgress] = useState(0);
   const [enabled] = useState(true);
-  // const [longPressed, setLongPressed] = useState(false);
   const progressBarContainerRef = useRef<HTMLDivElement>(null);
   const holdTime = 3000; // 3 seconds
   const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
   const startTimeRef = useRef<number>(0);
 
   const callback = useCallback(() => {
-    // setLongPressed(true);
     sendGetRequest();
   }, []);
 
   const bind = useLongPress(enabled ? callback : null, {
     onStart: (meta) => {
-      console.log("Press started", meta);
       startTimeRef.current = Date.now();
       const id = setInterval(updateProgressBar, 50); // Update every 50ms
       setIntervalId(id);
     },
     onFinish: (meta) => {
-      // setLongPressed(false);
-      console.log("Long press finished", meta);
       if (intervalId) clearInterval(intervalId);
       setProgress(0);
     },
     onCancel: (meta) => {
-      console.log("Press cancelled", meta);
       if (intervalId) clearInterval(intervalId);
       setProgress(0);
     },
@@ -53,8 +47,7 @@ const ButtonUsage: React.FC<ButtonUsageProps> = ({ style }) => {
   };
 
   const sendGetRequest = async () => {
-    console.log('Enviando requisição GET...');
-    const apiUrl = import.meta.env.REACT_APP_API_URL || 'http://ip.jsontest.com/';
+    const apiUrl = import.meta.env.REACT_APP_API_URL || 'https://httpbin.org/get';
 
     const config: AxiosRequestConfig = {
       headers: {
