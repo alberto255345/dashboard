@@ -69,7 +69,7 @@ button {
   transition: all var(--spring-duration) var(--spring-easing);
 }
 
-button:hover:not(:active),
+/* button:hover:not(:active), */
 button.active {
   transition-duration: calc(var(--spring-duration)*0.5);
   scale: 1.2;
